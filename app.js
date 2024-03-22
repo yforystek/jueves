@@ -23,59 +23,106 @@
 // // const edad=30
 // console.log(`🚀 ~ edad:`, edad)
 // ------------------------------------------------
-// tipos de datos en js
-// datos primitivos
-// 1. String
-let str = "Hola, soy un string";
-// str=6
-console.log(`🚀 ~ str:`, typeof str);
-// 2. Number
-let numb = 45;
-console.log(`🚀 ~ numb:`, typeof numb);
-// 3. Bigint
-const bigInt = 9007199254740991n;
-console.log(`🚀 ~ bigInt:`, typeof bigInt);
-// 4. Boolean
-let bool = true; // false
-console.log(`🚀 ~ bool:`, typeof bool);
-// 5. Undefined
-let und = undefined;
-console.log(`🚀 ~ und:`, typeof und);
-// 6. Null
-let nl = null;
-console.log(`🚀 ~ nl:`, typeof nl);
-// 7. Symbol
-let símbolo = Symbol("sím");
-console.log(`🚀 ~ símbolo:`, typeof símbolo);
+// // tipos de datos en js
+// // datos primitivos
+// // 1. String
+// let str = "Hola, soy un string";
+// // str=6
+// console.log(`🚀 ~ str:`, typeof str);
+// // 2. Number
+// let numb = 45;
+// console.log(`🚀 ~ numb:`, typeof numb);
+// // 3. Bigint
+// const bigInt = 9007199254740991n;
+// console.log(`🚀 ~ bigInt:`, typeof bigInt);
+// // 4. Boolean
+// let bool = true; // false
+// console.log(`🚀 ~ bool:`, typeof bool);
+// // 5. Undefined
+// let und = undefined;
+// console.log(`🚀 ~ und:`, typeof und);
+// // 6. Null
+// let nl = null;
+// console.log(`🚀 ~ nl:`, typeof nl);
+// // 7. Symbol
+// let símbolo = Symbol("sím");
+// console.log(`🚀 ~ símbolo:`, typeof símbolo);
 
-// datos complejos
-// 8. Object
-let objData="nombre"
-const obj = {
-  nombre: "Osvaldito",
-  edad: 37,
-};
-obj.edad = 30;
-obj[objData]="camilo"
-obj.apellido="ojeda"
-console.log(`🚀 ~ obj:`, obj)
-console.log(`🚀 ~ obj:`, typeof obj);
+// // datos complejos
+// // 8. Object
+// let objData = "nombre";
+// const obj = {
+//   nombre: "Osvaldito",
+//   edad: 37,
+// };
+// obj.edad = 30;
+// obj[objData] = "camilo";
+// obj.apellido = "ojeda";
+// console.log(`🚀 ~ obj:`, obj);
+// console.log(`🚀 ~ obj:`, typeof obj);
 
-// 9. Array
-const arr=[1,"hola","soy",true];
-console.log(`🚀 ~ arr:`, arr)
-console.log(`🚀 ~ arr:`,typeof arr)
+// // 9. Array
+// const arr = [1, "hola", "soy", true];
+// console.log(`🚀 ~ arr:`, arr);
+// console.log(`🚀 ~ arr:`, typeof arr);
 
-// 10 Date
-const dt= Date()
-console.log(`🚀 ~ dt:`, dt)
-console.log(`🚀 ~ dt:`, typeof dt)
+// // 10 Date
+// const dt = Date();
+// console.log(`🚀 ~ dt:`, dt);
+// console.log(`🚀 ~ dt:`, typeof dt);
 
-const ndt= new Date()
-console.log(`🚀 ~ ndt:`, ndt)
-console.log(`🚀 ~ ndt:`, typeof ndt)
+// const ndt = new Date();
+// console.log(`🚀 ~ ndt:`, ndt);
+// console.log(`🚀 ~ ndt:`, typeof ndt);
 
 // funciones
+// saludar();
+// function saludar(nombre) {
+//   console.log(`hola equipo  ${nombre}`);
+//   return `Hola equipo ${nombre}`;
+// }
+// console.log(saludar);
+// console.log(saludar());
+// console.log(typeof saludar);
+// console.log(typeof saludar());
 
+// saludar("os")
+// const saludar=function (nombre) {
+//   console.log(`🚀 ~ saludar ~ nombre:`, nombre)
+//   // return `Hola equipo ${nombre}`;
+// }
 
+// saludar("os")
 
+// arrow function
+
+// const saludar = () => console.log("hola");
+// const saludar = () => "hola";
+// const saludar = () => {
+//  return "hola";
+// };
+
+// const data = saludar();
+// console.log(`🚀 ~ data:`, data);
+
+// function whoIsThis() {
+//   console.log(`🚀 ~ whoIsThis ~ whoIsThis:`, this);
+// }
+// whoIsThis();
+
+// const whoisThisInArrow = () => console.log(`🚀 ~ whoisThisInArrow:`, this);
+// whoisThisInArrow();
+
+// callBack
+
+// function saludar(fn) {
+//   return fn();
+// }
+// function buenDia() {
+//   console.log(`🚀 ~ buenDia ~ buenDia:`)
+// }
+// saludar(buenDia);
+
+const saludar=(fn)=>fn()
+const buenDia=()=>console.log(`🚀 ~ buenDia ~ buenDia:`)
+saludar(buenDia)
