@@ -1,8 +1,4 @@
-let saludo="hola equipo"
-console.log(saludo)
-console.log(saludo)
-console.log(saludo)
-console.log(saludo)
-console.log(saludo)
-console.log(saludo)
-console.log("hola")
+console.log("index")
+console.log("index")
+console.log("index")
+console.log("index")
