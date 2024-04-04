@@ -1,4 +1,5 @@
-console.log("index")
-console.log("index")
-console.log("index")
-console.log("index")
+const greetings= require("./functions/greetings")
+// console.log(require)
+
+
+greetings()
