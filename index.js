@@ -1,7 +1,10 @@
 const greetings = require("./functions/greetings");
 // const searchMax=require("./functions/searchMax")
-const {searchMax, numeros}=require("./functions/searchMax")
-const sumArray=require("./functions/sumArray")
+const { searchMax, numeros } = require("./functions/searchMax");
+const sumArray = require("./functions/sumArray");
+const abbrevName = require("./functions/abbrevName");
+const oneProperty = require("./functions/oneProperty");
+const searchStudents=require("./functions/searchStudents")
 // console.log(`🚀 ~ searchMax:`, searchMax)
 // console.log(require)
 
@@ -10,7 +13,7 @@ const sumArray=require("./functions/sumArray")
 // console.log(`🚀 ~ arr:`, {...arr})
 
 // searchMax.searchMax([1,2,3])
-searchMax(numeros)
+// searchMax(numeros)
 
 // destructuring
 const data = {
@@ -19,12 +22,26 @@ const data = {
 };
 // const nick=data.nick
 // const age= data.age
-const {nick, age}= data
-console.log(`🚀 ~ age:`, age)
-console.log(`🚀 ~ nick:`, nick)
+const { nick, age } = data;
+// console.log(`🚀 ~ age:`, age)
+// console.log(`🚀 ~ nick:`, nick)
 // -----------------
-sumArray(numeros)
-
-
-
-
+// sumArray(numeros)
+// -----------------
+// abbrevName("camilo kuka canela chayane")
+// -----------------
+// oneProperty(
+//   [
+//     { name: "Kuka", edad: 3 },
+//     { name: "Canela", edad: 4 },
+//   ],
+//   "name"
+// );
+// -----------------
+const estudiantes = [
+  { nombre: "Juan", edad: 17, curso: "Primero" },
+  { nombre: "Ana", edad: 18, curso: "Primero" },
+  { nombre: "Carlos", edad: 16, curso: "Primero" },
+  { nombre: "María", edad: 19, curso: "Tercero" },
+];
+searchStudents(estudiantes)
