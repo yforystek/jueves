@@ -7,6 +7,7 @@
     "start": "node .",
     "dev": "node --watch .",
     "dev:fsSincronico":"node --watch ./fsSincronico/index.js",
+    "dev:fsPromesas":"node --watch ./fsPromesas/index.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [],
