@@ -9,7 +9,6 @@ rutasProducto.get("/", (req, res) => {
   const query =
     "SELECT id, nombre, cantidad, precio, descripcion FROM productos";
   conexion.query(query, (err, response, fields) => {
-    console.log(`🚀 ~ conexion.query ~ fields:`, fields)
     if (err) {
       res.status(500).send({ success: false, message: err.message });
     } else {
@@ -18,18 +17,75 @@ rutasProducto.get("/", (req, res) => {
   });
 });
 
-rutasProducto.get("/:id", (req, res, next) => {
-  res.send("get  producto  por id");
+rutasProducto.get("/:id", (req, res) => {
+  const { id } = req.params;
+  // const query = `SELECT id, nombre, cantidad, precio, descripcion FROM productos WHERE id= ${id}`;
+  // conexion.query(query, (err, response) => {
+  //   if (err) {
+  //     res.status(500).send({ success: false, message: err.message });
+  //   } else {
+  //     res.status(200).send({ success: true, message: response });
+  //   }
+  // });
+
+  const query = `SELECT id, nombre, cantidad, precio, descripcion FROM productos WHERE id=?`;
+  conexion.query(query, [id], (err, response) => {
+    if (err) {
+      res.status(500).send({ success: false, message: err.message });
+    } else {
+      res.status(200).send({ success: true, message: response });
+    }
+  });
 });
 rutasProducto.post("/", (req, res) => {
-  res.send("post  producto ");
+  const { nombre, cantidad, precio, descripcion } = req.body;
+  const query = `INSERT INTO productos (nombre, cantidad, precio, descripcion ) VALUES (?,?,?,?)`;
+  conexion.query(
+    query,
+    [nombre, cantidad, precio, descripcion],
+    (err, response) => {
+      if (err) {
+        res.status(500).send({ success: false, message: err.message });
+      } else {
+        res
+          .status(200)
+          .send({ success: true, message: "producto creado con exito" });
+      }
+    }
+  );
 });
 rutasProducto.put("/:id", (req, res) => {
-  res.send("put producto ");
+  const { id } = req.params;
+  const { nombre, cantidad, precio, descripcion } = req.body;
+  const query = `UPDATE productos SET  nombre=?, cantidad=?, precio=? ,descripcion=? WHERE id=?`;
+  conexion.query(
+    query,
+    [nombre, cantidad, precio, descripcion, id],
+    (err, response, field) => {
+      if (err) {
+        res.status(500).send({ success: false, message: err.message });
+      } else {
+        res
+          .status(200)
+          .send({ success: true, message: "producto modificado con exito" });
+      }
+    }
+  );
 });
 rutasProducto.use(log);
 rutasProducto.delete("/:id", (req, res) => {
-  res.send("delete producto ");
+  const { id } = req.params;
+  const query = `DELETE FROM productos WHERE id=?`;
+  conexion.query(query, [id], (err, response, field) => {
+    if (err) {
+      res.status(500).send({ success: false, message: err.message });
+    } else {
+      const message = response.affectedRows
+        ? "producto eliminado con exito"
+        : "el producto no existe";
+      res.status(200).send({ success: true, message });
+    }
+  });
 });
 
 export default rutasProducto;
