@@ -1,16 +1,14 @@
 import { Router } from "express";
+import UserControllers from "../Controllers/UserControllers.js";
 const rutasUsuario = Router();
 
-rutasUsuario.get("/", (req, res) => {
-  res.send("get all usuarios ");
-});
+const userControllers = new UserControllers();
+
+rutasUsuario.get("/",userControllers.mostrarUser);
 rutasUsuario.get("/:id", (req, res) => {
   res.send("get  usuarios  por id");
-
 });
-rutasUsuario.post("/", (req, res) => {
-  res.send("post  usuario ");
-});
+rutasUsuario.post("/", userControllers.crearUser);
 rutasUsuario.put("/:id", (req, res) => {
   res.send("put usuario ");
 });
