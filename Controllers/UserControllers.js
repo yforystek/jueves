@@ -22,7 +22,16 @@ class UserControllers {
   mostrarUserPorId = async (req, res) => {
     try {
       const { id } = req.params;
-      const data = await User.findAll();
+      const data = await User.findOne({
+        where: {
+          id,
+        },
+        attributes: ["id", "name", "roleId"],
+        include: {
+          model: Role,
+          attributes: ["name"],
+        },
+      });
       res.status(200).send({ success: true, message: data });
     } catch (error) {
       res.status(500).send({ success: false, message: error.message });
@@ -30,13 +39,63 @@ class UserControllers {
   };
   crearUser = async (req, res) => {
     try {
-      const { name, password, roleId } = req.body;
+      const { name, password, roleId, mail } = req.body;
       const data = await User.create({
         name,
         password,
         roleId,
+        mail,
       });
       res.status(200).send({ success: true, message: data });
+    } catch (error) {
+      res.status(500).send({ success: false, message: error.message });
+    }
+  };
+  updateUser = async (req, res) => {
+    try {
+      const { id } = req.params;
+      const { name, roleId } = req.body;
+      const data = await User.update(
+        {
+          name,
+          roleId,
+        },
+        {
+          where: {
+            id,
+          },
+        }
+      );
+      res.status(200).send({ success: true, message: data });
+    } catch (error) {
+      res.status(500).send({ success: false, message: error.message });
+    }
+  };
+  deleteUser = async (req, res) => {
+    try {
+      const { id } = req.params;
+      const data = await User.destroy({
+        where: {
+          id,
+        },
+      });
+      res.status(200).send({ success: true, message: data });
+    } catch (error) {
+      res.status(500).send({ success: false, message: error.message });
+    }
+  };
+  login = async (req, res) => {
+    try {
+      const { mail, password } = req.body;
+      const data = await User.findOne({
+        where: {
+          mail,
+        },
+      });
+      if (!data) throw new Error("Credenciales chafas");
+      const validate = await data.validacionPassword(password);
+      if (!validate) throw new Error("Credenciales chafas");
+      res.status(200).send({ success: true, message: data.id });
     } catch (error) {
       res.status(500).send({ success: false, message: error.message });
     }
