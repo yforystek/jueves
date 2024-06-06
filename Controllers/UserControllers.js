@@ -1,4 +1,5 @@
 import { User, Role } from "../Models/index.js";
+import { generadorDeToken, decodificadorDeToken } from "../utils/token.js";
 
 class UserControllers {
   constructor() {}
@@ -95,7 +96,22 @@ class UserControllers {
       if (!data) throw new Error("Credenciales chafas");
       const validate = await data.validacionPassword(password);
       if (!validate) throw new Error("Credenciales chafas");
-      res.status(200).send({ success: true, message: data.id });
+      const payload = {
+        id: data.id,
+        name: data.name,
+      };
+      const token = generadorDeToken(payload);
+      res.cookie("token", token);
+      res.status(200).send({ success: true, message: "logueo exitoso" });
+    } catch (error) {
+      res.status(500).send({ success: false, message: error.message });
+    }
+  };
+  me = async (req, res) => {
+    try {
+      const { user } = req;
+      if (!user) throw new Error("Credenciales chafas logueate");
+      res.status(200).send({ success: true, message: user});
     } catch (error) {
       res.status(500).send({ success: false, message: error.message });
     }
