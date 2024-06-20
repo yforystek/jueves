@@ -40,7 +40,7 @@ const { nick, age } = data;
 // -----------------
 const estudiantes = [
   { nombre: "Juan", edad: 17, curso: "Primero" },
-  { nombre: "pepe", edad: 18, curso: "Primero" },
+  { nombre: "Ana", edad: 18, curso: "Primero" },
   { nombre: "Carlos", edad: 16, curso: "Primero" },
   { nombre: "María", edad: 19, curso: "Tercero" },
   
