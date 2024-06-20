@@ -1,7 +1,7 @@
 {
   "name": "jueves",
   "version": "1.0.0",
-  "description": "",
+  "description": "En nuestra primera clase, cubrimos varios temas fundamentales para comenzar a trabajar con Node.js.",
   "main": "index.js",
   "scripts": {
     "start": "node .",
